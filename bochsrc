@@ -1,0 +1,15 @@
+
+megs: 32 # 内存大小32Mb
+romimage: file=/home/www/Documents/bochs/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/home/www/Documents/bochs/share/bochs/VGABIOS-lgpl-latest
+
+boot: disk
+log: bochs.log
+mouse: enabled=0
+#keyboard: enabled=1
+#map=/home/www/Documents/bochs/share/bochs/keymaps/x11-pc-us.map
+keyboard: keymap=$BXSHARE/keymaps/x11-pc-us.map
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path="hd60m.img", mode=flat
+
+
