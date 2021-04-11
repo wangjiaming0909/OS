@@ -2,3 +2,4 @@
 bin/*
 bochs.log
 share/*
+build/*.o

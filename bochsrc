@@ -1,7 +1,8 @@
 
 megs: 32 # 内存大小32Mb
-romimage: file=/home/www/Documents/bochs/share/bochs/BIOS-bochs-latest
-vgaromimage: file=/home/www/Documents/bochs/share/bochs/VGABIOS-lgpl-latest
+romimage: file=/usr/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
+display_library: term
 
 boot: disk
 log: bochs.log

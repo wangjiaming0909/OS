@@ -46,6 +46,9 @@ $(BUILD_DIR)/print.o: lib/kernel/print.S
 $(BUILD_DIR)/kernel.bin: $(OBJS)
 	$(LD) $(LDFLAGS) $^ -o $@
 
+all: mk_dir build mbr_loader image
+
+
 .PHONY : mk_dir hd clean all
 
 mk_dir:
@@ -57,14 +60,12 @@ mbr_loader:
 
 build: $(BUILD_DIR)/kernel.bin
 
-all: mk_dir build mbr_loader
-
 image:
 	@-rm -rf $(img)
-	bximage -hd -mode="flat" -size=30 -q $(img)
+	bximage -hd=30 -mode="create" -q $(img)
 	dd if=./boot/mbr.bin of=$(img) bs=512 count=1 conv=notrunc
-	dd if=./boot/loader.bin of=$(img) bs=512 seek=2 count=3 conv=notrunc
-	dd if=$(BUILD_DIR)/kernel.bin of=$(img) bs=512 seek=9 count=200 conv=notrunc
+	#dd if=./boot/loader.bin of=$(img) bs=512 seek=2 count=3 conv=notrunc
+	#dd if=$(BUILD_DIR)/kernel.bin of=$(img) bs=512 seek=9 count=200 conv=notrunc
 
 clean:
 	@-rm -rf $(BUILD_DIR)
